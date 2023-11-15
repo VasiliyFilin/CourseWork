@@ -5,7 +5,7 @@ public class Employee {
     private int division;
     private int salary;
     static int idCounter = 1;
-    static int id;
+    private int id;
 
     public Employee(String lastName, String firstName, String middleName, int division, int salary) {
         this.firstName = firstName;
@@ -43,7 +43,7 @@ public class Employee {
     @Override
     public String toString() {
         return "Сотрудник: " +
-                "id - " + id +
+                "id: " + id +
                 ", Ф.И.О - " + firstName + " " + middleName + " " + lastName +
                 ", Отдел - " + division +
                 ", Зарплата - " + salary;
