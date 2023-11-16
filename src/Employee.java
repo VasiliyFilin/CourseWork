@@ -4,8 +4,10 @@ public class Employee {
     private String lastName;
     private int division;
     private int salary;
-    static int idCounter = 1;
+    private static int idCounter = 1;
     private int id;
+
+    private static int increment;
 
     public Employee(String lastName, String firstName, String middleName, int division, int salary) {
         this.firstName = firstName;
@@ -55,5 +57,13 @@ public class Employee {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    public int indexSalary(int salary, int increment) {
+        this.salary = salary;
+        this.increment = increment;
+
+        salary += (salary * increment) / 100;
+        return salary;
     }
 }
