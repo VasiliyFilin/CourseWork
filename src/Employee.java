@@ -42,14 +42,20 @@ public class Employee {
         return id;
     }
 
+    public String toStringByDivision() {
+        return "id: " + id +
+                ", Ф.И.О - " + firstName + " " + middleName + " " + lastName +
+                ", Зарплата - " + salary;
+    }
+
     @Override
     public String toString() {
-        return "Сотрудник: " +
-                "id: " + id +
+        return "id: " + id +
                 ", Ф.И.О - " + firstName + " " + middleName + " " + lastName +
                 ", Отдел - " + division +
                 ", Зарплата - " + salary;
     }
+
 
     public void setDivision(int division) {
         this.division = division;
