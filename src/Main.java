@@ -27,32 +27,32 @@ public class Main {
                 , 3, 75000);
 
 //        Проверка вывода в консоль:
-        showListEmployees(employees);
-        System.out.println("\nСумма затрат на зарплаты в месяц: " + getMonthCost(employees));
-        findMinSalary(employees);
-        findMaxSalary(employees);
-        System.out.println("\nСреднее значение зарплат в месяц: " + calculateAverageMonthCost(employees));
-        showListEmployeesNames(employees);
-        indexSalary(employees, 5);
-        showListEmployees(employees);
-        findMinSalaryByDivision(employees, 2);
-        findMaxSalaryByDivision(employees, 5);
-        getMonthCostByDivision(employees, 3);
-        System.out.println("\nСредняя зарплата по отделу: " + calculateAverageMonthCostByDivision(employees,3));
-        indexSalaryByDivision(employees, 2, 10);
-        showListEmployeesByDivision(employees, 2);
-        findSalaryBelowValue(employees, 100000);
-        findSalaryAboveValue(employees, 100000);
+        showListEmployees();
+        System.out.println("\nСумма затрат на зарплаты в месяц: " + getMonthCost());
+        findMinSalary();
+        findMaxSalary();
+        System.out.println("\nСреднее значение зарплат в месяц: " + calculateAverageMonthCost());
+        showListEmployeesNames();
+        indexSalary(5);
+        showListEmployees();
+        findMinSalaryByDivision(2);
+        findMaxSalaryByDivision(5);
+        getMonthCostByDivision(3);
+        System.out.println("\nСредняя зарплата по отделу: " + calculateAverageMonthCostByDivision(3));
+        indexSalaryByDivision(2, 10);
+        showListEmployeesByDivision(2);
+        findSalaryBelowValue(100000);
+        findSalaryAboveValue(100000);
     }
 
-    public static void showListEmployees(Employee[] employees) {
+    public static void showListEmployees() {
         System.out.println("\nСписок сотрудников:");
         for (int i = 0; i < employees.length; i++) {
             System.out.println(employees[i].toString());
         }
     }
 
-    public static int getMonthCost(Employee[] employees) {
+    public static int getMonthCost() {
         var sum = 0;
         for (int i = 0; i < employees.length; i++) {
             sum += employees[i].getSalary();
@@ -60,7 +60,7 @@ public class Main {
         return sum;
     }
 
-    public static void findMinSalary(Employee[] employees) {
+    public static void findMinSalary() {
         System.out.println("\nСотрудники с минимальной зарплатой:");
         var n = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++) {
@@ -75,7 +75,7 @@ public class Main {
         }
     }
 
-    public static void findMaxSalary(Employee[] employees) {
+    public static void findMaxSalary() {
         System.out.println("\nСотрудники с максимальной зарплатой:");
         var n = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++) {
@@ -90,10 +90,10 @@ public class Main {
         }
     }
 
-    public static int calculateAverageMonthCost(Employee[] employees) {
-        return getMonthCost(employees) / employees.length;
+    public static int calculateAverageMonthCost() {
+        return getMonthCost() / employees.length;
     }
-    public static void showListEmployeesNames(Employee[] employees) {
+    public static void showListEmployeesNames() {
         System.out.println("\nФ.И.О. сотрудников:");
         for (int i = 0; i < employees.length; i++) {
             System.out.println(employees[i].getLastName() +
@@ -102,13 +102,13 @@ public class Main {
         }
     }
 
-    public static void indexSalary(Employee[] employees, int increment) {
+    public static void indexSalary(int increment) {
         for (int i = 0; i < employees.length; i++) {
-            employees[i].setSalary(employees[i].indexSalary(employees[i].getSalary(), increment));
+            employees[i].indexSalary(increment);
         }
     }
 
-    public static void findMinSalaryByDivision(Employee[] employees, int division) {
+    public static void findMinSalaryByDivision(int division) {
         System.out.println("\nСотрудники отдела " + division + " с минимальной зарплатой:");
         var n = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++) {
@@ -122,7 +122,7 @@ public class Main {
             }
         }
     }
-    public static void findMaxSalaryByDivision(Employee[] employees, int division) {
+    public static void findMaxSalaryByDivision(int division) {
         System.out.println("\nСотрудники отдела " + division + " с максимальной зарплатой:");
         var n = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++) {
@@ -136,7 +136,7 @@ public class Main {
             }
         }
     }
-    public static void getMonthCostByDivision(Employee[] employees, int division) {
+    public static void getMonthCostByDivision(int division) {
         var sum = 0;
         for (int i = 0; i < employees.length; i++) {
             if (employees[i].getDivision() == division) {
@@ -145,7 +145,7 @@ public class Main {
         }
         System.out.println("\nСумма затрат на зарплаты отдела " + division + " в месяц: " + sum);
     }
-    public static int calculateAverageMonthCostByDivision(Employee[] employees, int division) {
+    public static int calculateAverageMonthCostByDivision(int division) {
         int count = 0;
         var sum = 0;
         for (int i = 0; i < employees.length; i++) {
@@ -155,21 +155,21 @@ public class Main {
             }
         }
         if (count != 0) {
-            return sum /= count;
+            return sum / count;
         } else {
-            return sum = 0;
+            return  0;
         }
     }
 
-    public static void indexSalaryByDivision(Employee[] employees, int division, int increment) {
+    public static void indexSalaryByDivision(int division, int increment) {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i].getDivision() == division) {
-                employees[i].setSalary(employees[i].indexSalary(employees[i].getSalary(), increment));
+                employees[i].indexSalary(increment);
             }
         }
     }
 
-    public static void showListEmployeesByDivision(Employee[] employees, int division) {
+    public static void showListEmployeesByDivision(int division) {
         System.out.println("\nСписок сотрудников отдела " + division + ":");
         for (int i = 0; i < employees.length; i++) {
             if (employees[i].getDivision() == division) {
@@ -178,7 +178,7 @@ public class Main {
         }
     }
 
-    public static void findSalaryBelowValue(Employee[] employees, int val) {
+    public static void findSalaryBelowValue(int val) {
         System.out.println("\nСотрудники с зарплатой менее " + val + ":");
         for (int i = 0; i < employees.length; i++) {
             if (employees[i].getSalary() < val) {
@@ -186,7 +186,7 @@ public class Main {
             }
         }
     }
-    public static void findSalaryAboveValue(Employee[] employees, int val) {
+    public static void findSalaryAboveValue(int val) {
         System.out.println("\nСотрудники с зарплатой выше " + val + ":");
         for (int i = 0; i < employees.length; i++) {
             if (employees[i].getSalary() > val) {

@@ -65,7 +65,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    public int indexSalary(int salary, int increment) {
+    public int indexSalary(int increment) {
         this.salary = salary;
         this.increment = increment;
         salary += (salary * increment) / 100;
